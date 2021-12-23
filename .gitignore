@@ -6,6 +6,9 @@ https://github.com/simonwhitaker/gibo
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
+# Xcodegen
+*.xcodeproj
+
 ## User settings
 xcuserdata/
 
