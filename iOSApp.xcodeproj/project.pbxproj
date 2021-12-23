@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		094118FA5D80F2068653575C /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = E9181336C72D2C89CDBF295A /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BFAD7F6A251F1D9E7D18DA1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE5B1E176B940D3E85BFAE5 /* ViewController.swift */; };
+		0BFAD7F6A251F1D9E7D18DA1 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE5B1E176B940D3E85BFAE5 /* RootViewController.swift */; };
 		1D17463BC19DA68BA5909875 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B2601FACCBF12766E0A8904 /* Assets.xcassets */; };
 		1DEB4316F6A4067A6461DA91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924E5091B9B0DE1C2CE78932 /* Main.storyboard */; };
 		45260BC87227E0B5948CC351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47827B7DFE9E61F9D5BAA9B /* AppDelegate.swift */; };
@@ -16,6 +16,12 @@
 		D39691DF2774AD51000FED39 /* Bingo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691DE2774AD51000FED39 /* Bingo.swift */; };
 		D39691E72774AFB1000FED39 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691E62774AFB1000FED39 /* DomainTests.swift */; };
 		D39691E82774AFB1000FED39 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751CAC863C8F7D0B222A433C /* Domain.framework */; };
+		D39691F12774B032000FED39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691F02774B032000FED39 /* User.swift */; };
+		D39691F32774B043000FED39 /* BingoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691F22774B043000FED39 /* BingoRepository.swift */; };
+		D39691F92774B210000FED39 /* SingupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691F82774B210000FED39 /* SingupView.swift */; };
+		D39691FB2774B21B000FED39 /* SigninView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691FA2774B21B000FED39 /* SigninView.swift */; };
+		D39691FD2774B233000FED39 /* BingoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691FC2774B233000FED39 /* BingoListView.swift */; };
+		D39691FF2774B23D000FED39 /* GenerateBingoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691FE2774B23D000FED39 /* GenerateBingoView.swift */; };
 		E55CFD52F0EB57138338C65F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8D228FA35CD5ADFAFAC44B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -35,13 +41,19 @@
 		4502EAE0E862347C1955A3EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		46B57D8840EFCCAC92CCF7BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65A7202F513A388C5EDE454A /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BE5B1E176B940D3E85BFAE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		6BE5B1E176B940D3E85BFAE5 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		751CAC863C8F7D0B222A433C /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90DF2A638550589651D3A48E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		ACDF6BB6CD53E188460EC683 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D39691DE2774AD51000FED39 /* Bingo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bingo.swift; sourceTree = "<group>"; };
 		D39691E42774AFB1000FED39 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D39691E62774AFB1000FED39 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
+		D39691F02774B032000FED39 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		D39691F22774B043000FED39 /* BingoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoRepository.swift; sourceTree = "<group>"; };
+		D39691F82774B210000FED39 /* SingupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingupView.swift; sourceTree = "<group>"; };
+		D39691FA2774B21B000FED39 /* SigninView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninView.swift; sourceTree = "<group>"; };
+		D39691FC2774B233000FED39 /* BingoListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoListView.swift; sourceTree = "<group>"; };
+		D39691FE2774B23D000FED39 /* GenerateBingoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateBingoView.swift; sourceTree = "<group>"; };
 		E47827B7DFE9E61F9D5BAA9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9181336C72D2C89CDBF295A /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		F3AA46E10B2BE5183566A37F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -72,13 +84,14 @@
 		79F71BF0444F270E8690A758 /* iOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				D39691F52774B166000FED39 /* View */,
 				E47827B7DFE9E61F9D5BAA9B /* AppDelegate.swift */,
 				2B2601FACCBF12766E0A8904 /* Assets.xcassets */,
 				90DF2A638550589651D3A48E /* Info.plist */,
 				FD8D228FA35CD5ADFAFAC44B /* LaunchScreen.storyboard */,
 				924E5091B9B0DE1C2CE78932 /* Main.storyboard */,
 				ACDF6BB6CD53E188460EC683 /* SceneDelegate.swift */,
-				6BE5B1E176B940D3E85BFAE5 /* ViewController.swift */,
+				6BE5B1E176B940D3E85BFAE5 /* RootViewController.swift */,
 			);
 			path = iOSApp;
 			sourceTree = "<group>";
@@ -109,6 +122,7 @@
 		D39691DA2774AB99000FED39 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				D39691F22774B043000FED39 /* BingoRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -124,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D39691DE2774AD51000FED39 /* Bingo.swift */,
+				D39691F02774B032000FED39 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -134,6 +149,41 @@
 				D39691E62774AFB1000FED39 /* DomainTests.swift */,
 			);
 			path = DomainTests;
+			sourceTree = "<group>";
+		};
+		D39691F42774B160000FED39 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				D39691F82774B210000FED39 /* SingupView.swift */,
+				D39691FA2774B21B000FED39 /* SigninView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		D39691F52774B166000FED39 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D39691F72774B173000FED39 /* GenerateBingo */,
+				D39691F62774B16A000FED39 /* BingoList */,
+				D39691F42774B160000FED39 /* Auth */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D39691F62774B16A000FED39 /* BingoList */ = {
+			isa = PBXGroup;
+			children = (
+				D39691FC2774B233000FED39 /* BingoListView.swift */,
+			);
+			path = BingoList;
+			sourceTree = "<group>";
+		};
+		D39691F72774B173000FED39 /* GenerateBingo */ = {
+			isa = PBXGroup;
+			children = (
+				D39691FE2774B23D000FED39 /* GenerateBingoView.swift */,
+			);
+			path = GenerateBingo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +320,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39691F32774B043000FED39 /* BingoRepository.swift in Sources */,
+				D39691F12774B032000FED39 /* User.swift in Sources */,
 				D39691DF2774AD51000FED39 /* Bingo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,9 +330,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39691F92774B210000FED39 /* SingupView.swift in Sources */,
 				45260BC87227E0B5948CC351 /* AppDelegate.swift in Sources */,
+				D39691FD2774B233000FED39 /* BingoListView.swift in Sources */,
 				4ADDB7F52B5841DAE8D5A7B5 /* SceneDelegate.swift in Sources */,
-				0BFAD7F6A251F1D9E7D18DA1 /* ViewController.swift in Sources */,
+				0BFAD7F6A251F1D9E7D18DA1 /* RootViewController.swift in Sources */,
+				D39691FF2774B23D000FED39 /* GenerateBingoView.swift in Sources */,
+				D39691FB2774B21B000FED39 /* SigninView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

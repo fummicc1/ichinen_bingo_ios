@@ -47,6 +47,8 @@ targets:
       path: Domain/Domain.h
     - name: Model
       path: Domain/Model
+    - name: Repository
+      path: Domain/Repository
     type: framework
   DomainTests:
     dependencies:
