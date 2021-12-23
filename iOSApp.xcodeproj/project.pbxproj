@@ -13,23 +13,50 @@
 		1DEB4316F6A4067A6461DA91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 924E5091B9B0DE1C2CE78932 /* Main.storyboard */; };
 		45260BC87227E0B5948CC351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47827B7DFE9E61F9D5BAA9B /* AppDelegate.swift */; };
 		4ADDB7F52B5841DAE8D5A7B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDF6BB6CD53E188460EC683 /* SceneDelegate.swift */; };
+		D39691DF2774AD51000FED39 /* Bingo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691DE2774AD51000FED39 /* Bingo.swift */; };
+		D39691E72774AFB1000FED39 /* DomainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39691E62774AFB1000FED39 /* DomainTests.swift */; };
+		D39691E82774AFB1000FED39 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751CAC863C8F7D0B222A433C /* Domain.framework */; };
 		E55CFD52F0EB57138338C65F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD8D228FA35CD5ADFAFAC44B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D39691E92774AFB1000FED39 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3E02E4B0BE8883E1D5DFAF93 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8192A10C96CF88E2318DA5FF;
+			remoteInfo = Domain;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2B2601FACCBF12766E0A8904 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		440731D3DF24E11946A1B526 /* Domain.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Domain.docc; sourceTree = "<group>"; };
 		4502EAE0E862347C1955A3EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		46B57D8840EFCCAC92CCF7BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		65A7202F513A388C5EDE454A /* iOSApp.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65A7202F513A388C5EDE454A /* iOSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE5B1E176B940D3E85BFAE5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		751CAC863C8F7D0B222A433C /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90DF2A638550589651D3A48E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		ACDF6BB6CD53E188460EC683 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D39691DE2774AD51000FED39 /* Bingo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bingo.swift; sourceTree = "<group>"; };
+		D39691E42774AFB1000FED39 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D39691E62774AFB1000FED39 /* DomainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainTests.swift; sourceTree = "<group>"; };
 		E47827B7DFE9E61F9D5BAA9B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9181336C72D2C89CDBF295A /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
 		F3AA46E10B2BE5183566A37F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D39691E12774AFB1000FED39 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D39691E82774AFB1000FED39 /* Domain.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		5D01C838E37F4FCED545C95E = {
@@ -37,6 +64,7 @@
 			children = (
 				80B6FDA78FA0EAB4F60762BE /* Domain */,
 				79F71BF0444F270E8690A758 /* iOSApp */,
+				D39691E52774AFB1000FED39 /* DomainTests */,
 				9FED906C3112E31640B46DDA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,8 +86,8 @@
 		80B6FDA78FA0EAB4F60762BE /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D39691DD2774AD40000FED39 /* Model */,
 				D39691DC2774ABB2000FED39 /* UseCase */,
-				D39691DB2774ABAD000FED39 /* DataStore */,
 				D39691DA2774AB99000FED39 /* Repository */,
 				440731D3DF24E11946A1B526 /* Domain.docc */,
 				E9181336C72D2C89CDBF295A /* Domain.h */,
@@ -73,6 +101,7 @@
 			children = (
 				751CAC863C8F7D0B222A433C /* Domain.framework */,
 				65A7202F513A388C5EDE454A /* iOSApp.app */,
+				D39691E42774AFB1000FED39 /* DomainTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -84,18 +113,27 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		D39691DB2774ABAD000FED39 /* DataStore */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DataStore;
-			sourceTree = "<group>";
-		};
 		D39691DC2774ABB2000FED39 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		D39691DD2774AD40000FED39 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D39691DE2774AD51000FED39 /* Bingo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D39691E52774AFB1000FED39 /* DomainTests */ = {
+			isa = PBXGroup;
+			children = (
+				D39691E62774AFB1000FED39 /* DomainTests.swift */,
+			);
+			path = DomainTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,6 +165,7 @@
 			name = Domain;
 			packageProductDependencies = (
 				D39691D72774AB8B000FED39 /* Alamofire */,
+				D39691EF2774AFFA000FED39 /* KeychainAccess */,
 			);
 			productName = Domain;
 			productReference = 751CAC863C8F7D0B222A433C /* Domain.framework */;
@@ -148,13 +187,40 @@
 			productReference = 65A7202F513A388C5EDE454A /* iOSApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		D39691E32774AFB1000FED39 /* DomainTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D39691EB2774AFB1000FED39 /* Build configuration list for PBXNativeTarget "DomainTests" */;
+			buildPhases = (
+				D39691E02774AFB1000FED39 /* Sources */,
+				D39691E12774AFB1000FED39 /* Frameworks */,
+				D39691E22774AFB1000FED39 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D39691EA2774AFB1000FED39 /* PBXTargetDependency */,
+			);
+			name = DomainTests;
+			productName = DomainTests;
+			productReference = D39691E42774AFB1000FED39 /* DomainTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3E02E4B0BE8883E1D5DFAF93 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					8192A10C96CF88E2318DA5FF = {
+						LastSwiftMigration = 1320;
+					};
+					D39691E32774AFB1000FED39 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
 			};
 			buildConfigurationList = 07D5F4DB3439CA6D1AE01DEF /* Build configuration list for PBXProject "iOSApp" */;
 			compatibilityVersion = "Xcode 10.0";
@@ -167,12 +233,14 @@
 			mainGroup = 5D01C838E37F4FCED545C95E;
 			packageReferences = (
 				D39691D62774AB8B000FED39 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				D39691EE2774AFFA000FED39 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				8192A10C96CF88E2318DA5FF /* Domain */,
 				C336CB5BE68BB7C5D6185FCB /* iOSApp */,
+				D39691E32774AFB1000FED39 /* DomainTests */,
 			);
 		};
 /* End PBXProject section */
@@ -188,6 +256,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D39691E22774AFB1000FED39 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -195,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D39691DF2774AD51000FED39 /* Bingo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,12 +284,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D39691E02774AFB1000FED39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D39691E72774AFB1000FED39 /* DomainTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		D39691D92774AB92000FED39 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = D39691D82774AB92000FED39 /* Alamofire */;
+		};
+		D39691EA2774AFB1000FED39 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8192A10C96CF88E2318DA5FF /* Domain */;
+			targetProxy = D39691E92774AFB1000FED39 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -303,6 +392,7 @@
 		9524C343483298DC04264118 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -318,6 +408,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.fummicc1.ichinen-bingo.Domain";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -326,6 +418,7 @@
 		B8615BB4C188BD614BBD8455 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -341,8 +434,50 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "dev.fummicc1.ichinen-bingo.Domain";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = Release;
+		};
+		D39691EC2774AFB1000FED39 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.fummicc1.ichinen-bingo.DomainTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D39691ED2774AFB1000FED39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.fummicc1.ichinen-bingo.DomainTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -408,6 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
 				INFOPLIST_FILE = iOSApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -426,6 +562,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2X6AD4W323;
 				INFOPLIST_FILE = iOSApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -468,6 +605,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
+		D39691EB2774AFB1000FED39 /* Build configuration list for PBXNativeTarget "DomainTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D39691EC2774AFB1000FED39 /* Debug */,
+				D39691ED2774AFB1000FED39 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -477,6 +623,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		D39691EE2774AFFA000FED39 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -491,6 +645,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D39691D62774AB8B000FED39 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		D39691EF2774AFFA000FED39 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D39691EE2774AFFA000FED39 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
