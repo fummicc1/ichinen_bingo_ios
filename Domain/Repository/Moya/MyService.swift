@@ -6,6 +6,10 @@ public enum MyService {
 }
 
 extension MyService: TargetType {
+    public var sampleData: Data {
+        Data()
+    }
+
     public var baseURL: URL {
         URL(string: "")!
     }
