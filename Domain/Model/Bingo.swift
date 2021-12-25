@@ -21,9 +21,9 @@ public extension Bingo {
             self.isCompleted = isCompleted
         }
 
-        public let id: Int
-        public let title: String
-        public let bingoId: Int
-        public let isCompleted: Bool
+        public var id: Int
+        public var title: String
+        public var bingoId: Int
+        public var isCompleted: Bool
     }
 }

@@ -47,8 +47,8 @@ targets:
       path: Domain/Domain.h
     - name: Model
       path: Domain/Model
-    - name: Repository
-      path: Domain/Repository
+    - path: Domain/Repository/BingoRepository.swift
+    - path: Domain/Repository/HTTPClient.swift
     type: framework
   DomainTests:
     dependencies:
@@ -87,6 +87,8 @@ targets:
       path: DomainTests
     type: bundle.unit-test
   iOSApp:
+    dependencies:
+    - target: Domain
     platform: iOS
     settings:
       configs:
