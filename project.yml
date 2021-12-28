@@ -61,12 +61,17 @@ targets:
           VALIDATE_PRODUCT: 'YES'
     sources:
     - path: Domain/Constants.swift
+    - name: DataStore
+      path: Domain/DataStore
+    - path: Domain/HTTPClient.swift
     - name: Model
       path: Domain/Model
-    - name: Repository
-      path: Domain/Repository
+    - name: Moya
+      path: Domain/Moya
     - name: Stub
       path: Domain/Stub
+    - name: UseCase
+      path: Domain/UseCase
     type: library.static
   DomainTests:
     dependencies:
