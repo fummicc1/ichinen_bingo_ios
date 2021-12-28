@@ -27,8 +27,8 @@ struct RootView: View {
                 )
             }
         }
-        .task {
-            await model.onAppear()
+        .onAppear {
+            model.onAppear()
         }
     }
 }

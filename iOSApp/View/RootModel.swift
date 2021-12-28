@@ -19,15 +19,9 @@ class RootModel: ObservableObject {
 
     let bingoUseCase: BingoUseCase
 
-    func onAppear() async {
-        do {
-           let list = try await bingoUseCase.fetchList()
-            guard let latest = list.last else {
-                return
-            }
-            latestBingo = latest
-        } catch {
-            print(error)
-        }
+    func onAppear() {
+        bingoUseCase.onChange()
+            .map(\.last)
+            .assign(to: &$latestBingo)
     }
 }

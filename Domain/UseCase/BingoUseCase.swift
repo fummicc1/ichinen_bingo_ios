@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import Combine
 
 public protocol BingoUseCase {
     func validate(title: String, todos: [String]) -> InvalidBingoError?
     func add(title: String, todos: [String]) async throws
     func fetchList() async throws -> [Bingo]
+    func onChange() -> AnyPublisher<[Bingo], Never>
 }
 
 public enum InvalidBingoError: Error {
@@ -56,5 +58,11 @@ public class BingoUseCaseImpl: BingoUseCase {
     public func fetchList() async throws -> [Bingo] {
         let all = try await localDataStore.fetch(key: key, type: [Bingo].self) ?? []
         return all
+    }
+
+    public func onChange() -> AnyPublisher<[Bingo], Never> {
+        localDataStore.bingoListStream
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }
