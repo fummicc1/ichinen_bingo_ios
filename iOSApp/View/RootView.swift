@@ -6,17 +6,41 @@
 //
 
 import SwiftUI
+import Domain
 
 struct RootView: View {
+
+    @EnvironmentObject var dataStore: LocalDataStoreImpl
+    @ObservedObject var model: RootModel
+
     var body: some View {
-        TabView {
-            BingoItemView(bingo: .stub, model: BingoItemModel())
+        VStack {
+            if let latestBingo = model.latestBingo {
+                BingoItemView(model: BingoItemModel(bingo: latestBingo))
+            } else {
+                GenerateBingoView(
+                    model: GenerateBingoModel(
+                        useCase: BingoUseCaseImpl(
+                            localDataStore: dataStore
+                        )
+                    )
+                )
+            }
+        }
+        .task {
+            await model.onAppear()
         }
     }
 }
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView()
+        RootView(
+            model: RootModel(
+                bingoUseCase: BingoUseCaseImpl(
+                    localDataStore: LocalDataStoreImpl()
+                )
+            )
+        )
     }
 }

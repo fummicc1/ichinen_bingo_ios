@@ -6,54 +6,71 @@
 //
 
 import Foundation
-
-
 import SwiftUI
-import Introspect
 import Domain
 
 struct BingoItemView: View {
 
-    let bingo: Bingo
-
+    @EnvironmentObject var dataStore: LocalDataStoreImpl
     @ObservedObject var model: BingoItemModel
+    @State private var showCreatePage: Bool = false
 
     var body: some View {
-        GeometryReader { proxy in
-            let width: Double = (proxy.size.width / 5) - Double(5)
-            let height: Double = (proxy.size.height / 5) - Double(5)
-            let length = min(width, height)
-            HStack {
-                Spacer()
-                LazyVGrid(
-                    columns: Array(repeating: GridItem(.fixed(length), spacing: 1), count: 5),
-                    spacing: 1
-                ) {
-                    ForEach(bingo.todos.indices) { index in
-                        let todo = bingo.todos[index]
-                        let isCenter = (index / 5 == 2) && (index % 5 == 2)
-                        element(
-                            todo: todo,
-                            width: length,
-                            height: length,
-                            isCenter: isCenter
-                        ) { todo in
-                            model.todoSheet = todo
+        NavigationView {
+            GeometryReader { proxy in
+                let width: Double = (proxy.size.width / 5) - Double(5)
+                let height: Double = (proxy.size.height / 5) - Double(5)
+                let length = min(width, height)
+                HStack {
+                    Spacer()
+                    LazyVGrid(
+                        columns: Array(repeating: GridItem(.fixed(length), spacing: 1), count: 5),
+                        spacing: 1
+                    ) {
+                        ForEach((0..<25)) { index in
+                            let todo = model.bingo.todos[index]
+                            let isCenter = (index / 5 == 2) && (index % 5 == 2)
+                            element(
+                                todo: todo,
+                                width: length,
+                                height: length,
+                                isCenter: isCenter
+                            ) { todo in
+                                model.todoSheet = todo
+                            }
                         }
                     }
+                    Spacer()
                 }
-                Spacer()
             }
-        }
-        .navigationTitle(bingo.title)
-        .font(.largeTitle)
-        .foregroundColor(.tintColor)
-        .background(Color.backgroundColor)
-        .halfModal(identifiable: $model.todoSheet, content: { _ -> SimpleBingoTodoItemView in
-            let todo = $model.todoSheet
-            return SimpleBingoTodoItemView(todo: Binding(todo)!)
-        }) {
-            model.todoSheet = nil
+            .navigationTitle(model.bingo.title)
+            .font(.largeTitle)
+            .foregroundColor(.tintColor)
+            .background(Color.backgroundColor)
+            .halfModal(identifiable: $model.todoSheet, content: { _ -> SimpleBingoTodoItemView in
+                let todo = $model.todoSheet
+                return SimpleBingoTodoItemView(todo: Binding(todo)!)
+            }) {
+                model.todoSheet = nil
+            }
+            .toolbar {
+                Button {
+                    showCreatePage = true
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.title3)
+                }
+            }
+            .sheet(isPresented: $showCreatePage) {
+                showCreatePage = false
+            } content: {
+                GenerateBingoView(
+                    model: GenerateBingoModel(
+                        useCase: BingoUseCaseImpl(localDataStore: dataStore)
+                    )
+                )
+            }
+
         }
     }
 
@@ -91,8 +108,7 @@ struct BingoItemView: View {
 struct BingoItemView_Previews: PreviewProvider {
     static var previews: some View {
         BingoItemView(
-            bingo: Bingo.stub,
-            model: BingoItemModel()
+            model: BingoItemModel(bingo: Bingo.stub)
         )
     }
 }

@@ -25,4 +25,12 @@ extension Color {
     static var backgroundColor: Self {
         Color("BackgroundColor")
     }
+
+    static var secondaryBackgroundColor: Self {
+        Color("SecondaryBackgroundColor")
+    }
+
+    static var accentTextColor: Self {
+        Color("AccentTextColor")
+    }
 }

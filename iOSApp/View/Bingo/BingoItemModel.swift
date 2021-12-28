@@ -12,4 +12,9 @@ class BingoItemModel: ObservableObject {
 
     @Published var todoSheet: Bingo.Todo?
 
+    @Published var bingo: Bingo
+
+    public init(bingo: Bingo) {
+        self.bingo = bingo
+    }
 }

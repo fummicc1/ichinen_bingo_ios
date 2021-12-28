@@ -7,14 +7,24 @@
 
 import UIKit
 import SwiftUI
+import Domain
 
 class RootViewController: UIViewController {
 
-    private var contentHostingController: UIHostingController<RootView>?
+    private var contentHostingController: UIHostingController<AnyView>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let controller = UIHostingController(rootView: RootView())
+        let dataStore = LocalDataStoreImpl()
+        let controller = UIHostingController(
+            rootView: AnyView(
+                RootView(
+                    model: RootModel(
+                        bingoUseCase: BingoUseCaseImpl(localDataStore: dataStore)
+                    )
+                ).environmentObject(dataStore)
+            )
+        )
         addChild(controller)
         view.addSubview(controller.view)
         controller.view.frame = view.bounds
