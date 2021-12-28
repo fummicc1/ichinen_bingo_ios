@@ -17,11 +17,15 @@ struct BingoListView: View {
             List {
                 ForEach(bingos) { bingo in
                     NavigationLink(bingo.title) {
-                        BingoItemView(bingo: bingo)
+                        BingoItemView(
+                            bingo: bingo,
+                            model: BingoItemModel()
+                        )
                     }
                 }
             }
             .navigationTitle("2022年")
+            .background(Color.backgroundColor)
         }
     }
 }

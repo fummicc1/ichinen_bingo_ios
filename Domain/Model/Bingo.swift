@@ -24,6 +24,7 @@ public struct Bingo: Codable, Stubbable, Identifiable, Hashable {
         (0..<25).map({ id in
             var stub = Todo.stub
             stub.id = id
+            stub.index = id
             return stub
         })
     }
@@ -31,14 +32,16 @@ public struct Bingo: Codable, Stubbable, Identifiable, Hashable {
 
 public extension Bingo {
     struct Todo: Codable, Stubbable, Identifiable, Hashable {
-        public init(id: Int, title: String, bingoId: Int, isCompleted: Bool) {
+        public init(id: Int, index: Int, title: String, bingoId: Int, isCompleted: Bool) {
             self.id = id
+            self.index = index
             self.title = title
             self.bingoId = bingoId
             self.isCompleted = isCompleted
         }
 
         public var id: Int
+        public var index: Int
         public var title: String
         public var bingoId: Int
         public var isCompleted: Bool
@@ -46,7 +49,8 @@ public extension Bingo {
         public static var stub: Bingo.Todo {
             Bingo.Todo(
                 id: 0,
-                title: "Stub Title",
+                index: 0,
+                title: "Stub Title Stub Title Stub Title Stub Title",
                 bingoId: 0,
                 isCompleted: false
             )
