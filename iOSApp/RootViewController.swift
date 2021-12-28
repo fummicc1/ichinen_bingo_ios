@@ -6,14 +6,21 @@
 //
 
 import UIKit
+import SwiftUI
 
 class RootViewController: UIViewController {
 
+    private var contentHostingController: UIHostingController<BingoListView>?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        let controller = UIHostingController(rootView: BingoListView(bingos: [.stub]))
+        addChild(controller)
+        view.addSubview(controller.view)
+        controller.view.frame = view.bounds
+        controller.didMove(toParent: self)
+
+        self.contentHostingController = controller
     }
-
-
 }
-

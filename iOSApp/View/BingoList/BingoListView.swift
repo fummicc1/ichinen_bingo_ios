@@ -6,15 +6,30 @@
 //
 
 import SwiftUI
+import Domain
 
 struct BingoListView: View {
+
+    let bingos: [Bingo]
+
     var body: some View {
-        Text("Hello, World!")
+        NavigationView {
+            List {
+                ForEach(bingos) { bingo in
+                    NavigationLink(bingo.title) {
+                        BingoItemView(bingo: bingo)
+                    }
+                }
+            }
+            .navigationTitle("2022年")
+        }
     }
 }
 
 struct BingoListView_Previews: PreviewProvider {
     static var previews: some View {
-        BingoListView()
+        BingoListView(bingos: [
+            Bingo.stub
+        ])
     }
 }
