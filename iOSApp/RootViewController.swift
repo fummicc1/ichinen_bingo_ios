@@ -10,17 +10,15 @@ import SwiftUI
 
 class RootViewController: UIViewController {
 
-    private var contentHostingController: UIHostingController<BingoListView>?
+    private var contentHostingController: UIHostingController<RootView>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let controller = UIHostingController(rootView: BingoListView(bingos: [.stub]))
+        let controller = UIHostingController(rootView: RootView())
         addChild(controller)
         view.addSubview(controller.view)
         controller.view.frame = view.bounds
         controller.didMove(toParent: self)
-
         self.contentHostingController = controller
     }
 }

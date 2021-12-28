@@ -9,6 +9,7 @@ import Foundation
 
 
 import SwiftUI
+import Introspect
 import Domain
 
 struct BingoItemView: View {
@@ -48,12 +49,12 @@ struct BingoItemView: View {
         .font(.largeTitle)
         .foregroundColor(.tintColor)
         .background(Color.backgroundColor)
-        .halfModal(isPresented: $model.todoSheet, content: { todo in
-            SimpleBingoTodoItemView(todo: todo)
+        .halfModal(identifiable: $model.todoSheet, content: { _ -> SimpleBingoTodoItemView in
+            let todo = $model.todoSheet
+            return SimpleBingoTodoItemView(todo: Binding(todo)!)
         }) {
             model.todoSheet = nil
         }
-
     }
 
     private func element(
@@ -84,7 +85,6 @@ struct BingoItemView: View {
                 height: height
             )
         }
-
     }
 }
 

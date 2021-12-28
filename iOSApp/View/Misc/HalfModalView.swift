@@ -11,10 +11,10 @@ import SwiftUI
 
 struct HalfModalView<Root: View, ModalView: View, ID: Identifiable>: UIViewControllerRepresentable {
 
-    internal init(root: Root, modal: ModalView, isPresented: Binding<ID?>, onDismiss: @escaping () -> Void) {
+    internal init(root: Root, modal: ModalView, model: Binding<ID?>, onDismiss: @escaping () -> Void) {
         self.root = root
         self.modal = modal
-        self._isPresented = isPresented
+        self._model = model
         self.onDismiss = onDismiss
     }
 
@@ -22,7 +22,7 @@ struct HalfModalView<Root: View, ModalView: View, ID: Identifiable>: UIViewContr
     let modal: ModalView
     let onDismiss: () -> Void
     @State private var isShow: Bool = true
-    @Binding var isPresented: ID?
+    @Binding var model: ID?
 
 
     func makeUIViewController(context: Context) -> some UIViewController {
@@ -30,6 +30,7 @@ struct HalfModalView<Root: View, ModalView: View, ID: Identifiable>: UIViewContr
     }
 
     func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+
         if !isShow {
             uiViewController.dismiss(animated: true) {
                 onDismiss()
@@ -37,17 +38,24 @@ struct HalfModalView<Root: View, ModalView: View, ID: Identifiable>: UIViewContr
             return
         }
         let contentViewController = UIHostingController(rootView: modal)
+        if uiViewController.presentedViewController != nil {
+            return
+        }
+        contentViewController.modalPresentationStyle = .pageSheet
         if let sheet = contentViewController.sheetPresentationController {
-            sheet.detents = [.medium()]
-            sheet.largestUndimmedDetentIdentifier = .medium
-            sheet.prefersScrollingExpandsWhenScrolledToEdge = true
+            sheet.detents = [.medium(), .large()]
+            sheet.largestUndimmedDetentIdentifier = .none
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
             sheet.prefersEdgeAttachedInCompactHeight = true
             sheet.widthFollowsPreferredContentSizeWhenEdgeAttached = true
         }
         contentViewController.presentationController?.delegate = context.coordinator
-        uiViewController.present(contentViewController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            uiViewController.present(contentViewController, animated: true, completion: nil)
+        }
     }
-
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(isShow: $isShow)
     }
@@ -71,16 +79,18 @@ struct HalfModalView<Root: View, ModalView: View, ID: Identifiable>: UIViewContr
 extension View {
     @ViewBuilder
     func halfModal<Content: View, ID: Identifiable>(
-        isPresented: Binding<ID?>,
+        identifiable: Binding<ID?>,
         content: (ID) -> Content,
         onDismiss: @escaping () -> Void
     ) -> some View {
-        if let model = isPresented.wrappedValue {
-            HalfModalView(
-                root: self,
-                modal: content(model),
-                isPresented: isPresented,
-                onDismiss: onDismiss
+        if let model = identifiable.wrappedValue {
+            background(
+                HalfModalView(
+                    root: self,
+                    modal: content(model),
+                    model: identifiable,
+                    onDismiss: onDismiss
+                )
             )
         } else {
             self

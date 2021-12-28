@@ -10,7 +10,7 @@ import Domain
 
 struct SimpleBingoTodoItemView: View {
 
-    let todo: Bingo.Todo
+    @Binding var todo: Bingo.Todo
 
     var body: some View {
         VStack {
@@ -34,6 +34,6 @@ struct SimpleBingoTodoItemView: View {
 
 struct SimpleBingoItemView_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleBingoTodoItemView(todo: Bingo.Todo.stub)
+        SimpleBingoTodoItemView(todo: .constant(Bingo.Todo.stub))
     }
 }

@@ -25,6 +25,7 @@ public struct Bingo: Codable, Stubbable, Identifiable, Hashable {
             var stub = Todo.stub
             stub.id = id
             stub.index = id
+            stub.title = "\(id)"
             return stub
         })
     }
