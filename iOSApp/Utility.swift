@@ -22,32 +22,3 @@ struct AnyShape: Shape {
         return builder(rect)
     }
 }
-
-// https://zenn.dev/kazuchanfl/articles/f9b364c63ad3a7
-struct CheckBox: View {
-
-    init(isChecked: Bool) {
-        _isChecked = State(initialValue: isChecked)
-    }
-
-    @State private var isChecked: Bool
-
-    private let feedback: UIImpactFeedbackGenerator = .init()
-
-    var body: some View {
-        Button(action: toggle) {
-            if(isChecked) {
-                Image(systemName: "checkmark.square.fill")
-            .foregroundColor(.green)
-            } else {
-                Image(systemName: "square")
-            }
-        }
-    }
-
-    func toggle() -> Void {
-        isChecked = !isChecked
-        feedback.impactOccurred()
-        feedback.prepare()
-    }
-}

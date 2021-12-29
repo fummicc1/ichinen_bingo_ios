@@ -14,6 +14,7 @@ struct BingoItemView: View {
     @EnvironmentObject var dataStore: LocalDataStoreImpl
     @ObservedObject var model: BingoItemModel
     @State private var showCreatePage: Bool = false
+    @State private var showSharePage: Bool = false
 
     var body: some View {
         NavigationView {
@@ -54,11 +55,19 @@ struct BingoItemView: View {
                 model.todoSheet = nil
             }
             .toolbar {
-                Button {
-                    showCreatePage = true
-                } label: {
-                    Image(systemName: "plus")
-                        .font(.title3)
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button {
+                        showSharePage = true
+                    } label: {
+                        Image(systemName: "square.and.arrow.up")
+                            .font(.body)
+                    }
+                    Button {
+                        showCreatePage = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .font(.body)
+                    }
                 }
             }
             .sheet(isPresented: $showCreatePage) {
@@ -70,7 +79,15 @@ struct BingoItemView: View {
                     )
                 )
             }
-
+            .sheet(isPresented: $showSharePage) {
+                showCreatePage = false
+            } content: {
+                GenerateBingoView(
+                    model: GenerateBingoModel(
+                        useCase: BingoUseCaseImpl(localDataStore: dataStore)
+                    )
+                )
+            }
         }
     }
 

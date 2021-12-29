@@ -12,6 +12,8 @@ public protocol BingoUseCase {
     func validate(title: String, todos: [String]) -> InvalidBingoError?
     func add(title: String, todos: [String]) async throws
     func fetchList() async throws -> [Bingo]
+    func fetchImage() async -> URL
+    func buildIntentLink(bingo: Bingo, image: URL?) async throws -> URL
     func onChange() -> AnyPublisher<[Bingo], Never>
 }
 
@@ -22,12 +24,14 @@ public enum InvalidBingoError: Error {
 
 public class BingoUseCaseImpl: BingoUseCase {
 
-    public init(localDataStore: LocalDataStore) {
+    public init(localDataStore: LocalDataStore, httpClient: HTTPClient) {
         self.localDataStore = localDataStore
+        self.httpClient = httpClient
     }
 
     private let key: String = "bingos"
     let localDataStore: LocalDataStore
+    let httpClient: HTTPClient
 
     public func validate(title: String, todos: [String]) -> InvalidBingoError? {
         if title.isEmpty {
@@ -58,6 +62,14 @@ public class BingoUseCaseImpl: BingoUseCase {
     public func fetchList() async throws -> [Bingo] {
         let all = try await localDataStore.fetch(key: key, type: [Bingo].self) ?? []
         return all
+    }
+
+    public func fetchImage() async -> URL {
+        fatalError()
+    }
+
+    public func buildIntentLink(bingo: Bingo, image: URL?) async throws -> URL {
+        fatalError()
     }
 
     public func onChange() -> AnyPublisher<[Bingo], Never> {

@@ -9,7 +9,14 @@ public protocol HTTPClient {
 
 public struct HTTPClientImpl {
     private let provider = MoyaProvider<MyService>()
-    private let decoder: JSONDecoder = JSONDecoder()
+    private let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return decoder
+    }()
+
+    public init() { }
 }
 
 extension HTTPClientImpl: HTTPClient {
