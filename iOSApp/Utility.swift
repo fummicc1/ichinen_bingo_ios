@@ -23,31 +23,17 @@ struct AnyShape: Shape {
     }
 }
 
-// https://zenn.dev/kazuchanfl/articles/f9b364c63ad3a7
-struct CheckBox: View {
+struct ActivityController: UIViewControllerRepresentable {
+    let items: [Any]
+    let activities: [UIActivity]?
 
-    init(isChecked: Bool) {
-        _isChecked = State(initialValue: isChecked)
+    func makeUIViewController(context: Context) -> some UIViewController {
+        UIActivityViewController(
+            activityItems: items,
+            applicationActivities: activities
+        )
     }
 
-    @State private var isChecked: Bool
-
-    private let feedback: UIImpactFeedbackGenerator = .init()
-
-    var body: some View {
-        Button(action: toggle) {
-            if(isChecked) {
-                Image(systemName: "checkmark.square.fill")
-            .foregroundColor(.green)
-            } else {
-                Image(systemName: "square")
-            }
-        }
-    }
-
-    func toggle() -> Void {
-        isChecked = !isChecked
-        feedback.impactOccurred()
-        feedback.prepare()
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
     }
 }

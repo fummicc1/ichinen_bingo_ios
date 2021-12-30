@@ -6,23 +6,31 @@
 //
 
 import Foundation
+import Combine
 
 public protocol LocalDataStore {
+    var bingoListStream: AnyPublisher<[Bingo], Never> { get }
     func save<Value: Codable>(key: String, value: Value) async throws
     func fetch<Value: Codable>(key: String, type: Value.Type) async throws -> Value?
 }
 
-public actor LocalDataStoreImpl: ObservableObject, LocalDataStore {
+public class LocalDataStoreImpl: ObservableObject, LocalDataStore {
 
 
     // TODO: Move reponsibility to other object
     @MainActor @Published var bingoList: [Bingo] = []
 
+    public var bingoListStream: AnyPublisher<[Bingo], Never> {
+        $bingoList.eraseToAnyPublisher()
+    }
 
     let database: UserDefaults
 
     public init(database: UserDefaults = .standard) {
         self.database = database
+        Task {
+            await sync()
+        }
     }
 
     public func save<Value>(key: String, value: Value) async throws where Value : Decodable, Value : Encodable {

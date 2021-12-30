@@ -21,9 +21,15 @@ struct SimpleBingoTodoItemView: View {
                 .foregroundColor(Color.tintColor)
             Spacer().frame(height: 24)
             List {
-                HStack {
-                    Text("ステータス")
-                    CheckBox(isChecked: todo.isCompleted)
+                ListItemView(
+                    title: "ステータス",
+                    content: Toggle(
+                        isOn: .constant(todo.isCompleted),
+                        label: {
+                            Text("達成状況")
+                        }
+                    )
+                ) {
                 }
             }
         }
