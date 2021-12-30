@@ -1,5 +1,5 @@
 attributes:
-  LastSwiftUpdateCheck: '1320'
+  LastSwiftUpdateCheck: '1310'
   LastUpgradeCheck: '1200'
 configs:
   Debug: debug
@@ -36,28 +36,31 @@ targets:
       configs:
         Debug:
           CLANG_CXX_LANGUAGE_STANDARD: gnu++17
+          CODE_SIGN_IDENTITY: iPhone Developer
           CODE_SIGN_STYLE: Automatic
           DEVELOPMENT_TEAM: 2X6AD4W323
           GCC_PREPROCESSOR_DEFINITIONS:
           - DEBUG=1
           - $(inherited)
+          GENERATE_INFOPLIST_FILE: 'YES'
+          INFOPLIST_KEY_NSHumanReadableCopyright: ''
           IPHONEOS_DEPLOYMENT_TARGET: '15.0'
-          MACOSX_DEPLOYMENT_TARGET: '12.0'
-          ONLY_ACTIVE_ARCH: 'YES'
-          OTHER_LDFLAGS: -ObjC
-          SKIP_INSTALL: 'YES'
+          MARKETING_VERSION: '1.0'
+          PRODUCT_BUNDLE_IDENTIFIER: dev.fummicc1.ichinen-bingo.Domain
+          SWIFT_EMIT_LOC_STRINGS: 'YES'
           SWIFT_VERSION: '5.0'
-          TVOS_DEPLOYMENT_TARGET: '15.0'
         Release:
           CLANG_CXX_LANGUAGE_STANDARD: gnu++17
+          CODE_SIGN_IDENTITY: iPhone Developer
           CODE_SIGN_STYLE: Automatic
           DEVELOPMENT_TEAM: 2X6AD4W323
+          GENERATE_INFOPLIST_FILE: 'YES'
+          INFOPLIST_KEY_NSHumanReadableCopyright: ''
           IPHONEOS_DEPLOYMENT_TARGET: '15.0'
-          MACOSX_DEPLOYMENT_TARGET: '12.0'
-          OTHER_LDFLAGS: -ObjC
-          SKIP_INSTALL: 'YES'
+          MARKETING_VERSION: '1.0'
+          PRODUCT_BUNDLE_IDENTIFIER: dev.fummicc1.ichinen-bingo.Domain
+          SWIFT_EMIT_LOC_STRINGS: 'YES'
           SWIFT_VERSION: '5.0'
-          TVOS_DEPLOYMENT_TARGET: '15.0'
           VALIDATE_PRODUCT: 'YES'
     sources:
     - path: Domain/Constants.swift
@@ -72,11 +75,11 @@ targets:
       path: Domain/Stub
     - name: UseCase
       path: Domain/UseCase
-    type: library.static
+    type: framework
   DomainTests:
     dependencies:
     - target: Domain
-    - target: libDomain.a
+    - target: iOSApp
     platform: iOS
     settings:
       configs:
@@ -90,11 +93,12 @@ targets:
           - DEBUG=1
           - $(inherited)
           GENERATE_INFOPLIST_FILE: 'YES'
-          IPHONEOS_DEPLOYMENT_TARGET: '15.2'
+          IPHONEOS_DEPLOYMENT_TARGET: '15.0'
           MARKETING_VERSION: '1.0'
-          PRODUCT_BUNDLE_IDENTIFIER: dev.fummicc1.ichinen-bingo.Domain.DomainTests
+          PRODUCT_BUNDLE_IDENTIFIER: dev.fummicc1.ichinen-bingo.DomainTests
           SWIFT_EMIT_LOC_STRINGS: 'NO'
           SWIFT_VERSION: '5.0'
+          TEST_HOST: $(BUILT_PRODUCTS_DIR)/iOSApp.app/iOSApp
         Release:
           ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: 'YES'
           CLANG_CXX_LANGUAGE_STANDARD: gnu++17
@@ -102,24 +106,22 @@ targets:
           CURRENT_PROJECT_VERSION: '1'
           DEVELOPMENT_TEAM: 2X6AD4W323
           GENERATE_INFOPLIST_FILE: 'YES'
-          IPHONEOS_DEPLOYMENT_TARGET: '15.2'
+          IPHONEOS_DEPLOYMENT_TARGET: '15.0'
           MARKETING_VERSION: '1.0'
-          PRODUCT_BUNDLE_IDENTIFIER: dev.fummicc1.ichinen-bingo.Domain.DomainTests
+          PRODUCT_BUNDLE_IDENTIFIER: dev.fummicc1.ichinen-bingo.DomainTests
           SWIFT_EMIT_LOC_STRINGS: 'NO'
           SWIFT_VERSION: '5.0'
+          TEST_HOST: $(BUILT_PRODUCTS_DIR)/iOSApp.app/iOSApp
           VALIDATE_PRODUCT: 'YES'
-    sources:
-    - name: DomainTests
-      path: DomainTests
     type: bundle.unit-test
   iOSApp:
     dependencies:
     - target: Domain
-    - target: libDomain.a
     platform: iOS
     settings:
       configs:
         Debug:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: 'YES'
           CURRENT_PROJECT_VERSION: '1'
           DEVELOPMENT_TEAM: 2X6AD4W323
           INFOPLIST_FILE: iOSApp/Info.plist
@@ -128,6 +130,7 @@ targets:
           ONLY_ACTIVE_ARCH: 'YES'
           PRODUCT_BUNDLE_IDENTIFIER: dev.fummicc1.ichinen-bingo.iOSApp
         Release:
+          ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: 'YES'
           CURRENT_PROJECT_VERSION: '1'
           DEVELOPMENT_TEAM: 2X6AD4W323
           INFOPLIST_FILE: iOSApp/Info.plist
