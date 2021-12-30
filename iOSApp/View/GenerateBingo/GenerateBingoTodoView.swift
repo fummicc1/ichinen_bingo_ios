@@ -13,21 +13,29 @@ struct GenerateBingoTodoView: View {
 
     var body: some View {
         TabView {
-            ForEach(0..<5) { row -> List in
+            ForEach(0..<5) { row in
                 VStack {
-                    ForEach(0..<5) { column in
-                        let index = row * 5 + column
-                        let number = index + 1
-                        ListItemView(
-                            title: "Todo\(number)",
-                            content: TextField("\(number)個目のTodoを入力", text: $todos[index]),
-                            onTap: nil
-                        )
-                    }
+                    child(at: row)
                 }
             }
         }
-        .tabViewStyle(.page)
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+    }
+
+    @ViewBuilder
+    private func child(at row: Int) -> some View {
+        ForEach(0..<5) { column in
+            let index = row * 5 + column
+            let number = index + 1
+            ListItemView(
+                title: "Todo\(number)",
+                content: TextField("\(number)個目のTodoを入力", text: $todos[index]),
+                onTap: nil
+            )
+        }
+        Text("\(row+1)/5")
+            .bold()
+            .multilineTextAlignment(.center)
     }
 }
 

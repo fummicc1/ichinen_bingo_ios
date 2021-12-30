@@ -31,6 +31,7 @@ struct GenerateBingoView: View {
                             .foregroundColor(.red)
                     }
                     GenerateBingoTodoView(todos: $model.todos)
+                        .frame(minHeight: 360)
                 }
                 Spacer()
                 Button {
