@@ -13,11 +13,59 @@ struct BingoItemView: View {
 
     @EnvironmentObject var dataStore: LocalDataStoreImpl
     @ObservedObject var model: BingoItemModel
-    @State private var showCreatePage: Bool = false
-    @State private var showSharePage: Bool = false
 
     var body: some View {
         NavigationView {
+            content()
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationTitle("人生ビンゴ")
+                .halfModal(identifiable: $model.todoSheet, content: { _ -> SimpleBingoTodoItemView in
+                    let todo = $model.todoSheet
+                    return SimpleBingoTodoItemView(todo: Binding(todo)!)
+                }) {
+                    model.todoSheet = nil
+                }
+                .sheet(item: $model.destination, onDismiss: {
+                    model.destination = nil
+                }, content: { destination in
+                    switch destination {
+                    case .new:
+                        GenerateBingoView(
+                            model: GenerateBingoModel(
+                                useCase: BingoUseCaseImpl(
+                                    localDataStore: LocalDataStoreImpl(),
+                                    httpClient: HTTPClientImpl()
+                                )
+                            )
+                        )
+                    case .share:
+                        ActivityController(items: [model.bingo.title, model.screenshot as Any], activities: nil)
+                    }
+                })
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarTrailing) {
+                        Button {
+                            model.share()
+                        } label: {
+                            Image(systemName: "square.and.arrow.up")
+                                .font(.body)
+                        }
+                        Button {
+                            model.destination = .new
+                        } label: {
+                            Image(systemName: "plus")
+                                .font(.body)
+                        }
+                    }
+                }
+        }
+    }
+
+    private func content() -> some View {
+        VStack {
+            Text("<タイトル: \(model.bingo.title)>")
+                .font(.title2)
+                .multilineTextAlignment(.center)
             GeometryReader { proxy in
                 let width: Double = (proxy.size.width / 5) - Double(5)
                 let height: Double = (proxy.size.height / 5) - Double(5)
@@ -44,51 +92,8 @@ struct BingoItemView: View {
                     Spacer()
                 }
             }
-            .navigationTitle(model.bingo.title)
-            .font(.largeTitle)
-            .foregroundColor(.tintColor)
-            .background(Color.backgroundColor)
-            .halfModal(identifiable: $model.todoSheet, content: { _ -> SimpleBingoTodoItemView in
-                let todo = $model.todoSheet
-                return SimpleBingoTodoItemView(todo: Binding(todo)!)
-            }) {
-                model.todoSheet = nil
-            }
-            .toolbar {
-                ToolbarItemGroup(placement: .navigationBarTrailing) {
-                    Button {
-                        showSharePage = true
-                    } label: {
-                        Image(systemName: "square.and.arrow.up")
-                            .font(.body)
-                    }
-                    Button {
-                        showCreatePage = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.body)
-                    }
-                }
-            }
-            .sheet(isPresented: $showCreatePage) {
-                showCreatePage = false
-            } content: {
-                GenerateBingoView(
-                    model: GenerateBingoModel(
-                        useCase: BingoUseCaseImpl(localDataStore: dataStore)
-                    )
-                )
-            }
-            .sheet(isPresented: $showSharePage) {
-                showCreatePage = false
-            } content: {
-                GenerateBingoView(
-                    model: GenerateBingoModel(
-                        useCase: BingoUseCaseImpl(localDataStore: dataStore)
-                    )
-                )
-            }
         }
+        .background(Color.backgroundColor)
     }
 
     private func element(
@@ -112,13 +117,29 @@ struct BingoItemView: View {
                         isCenter ? AnyShape(Circle()) : AnyShape(Rectangle())
                     )
                     .padding(2)
+                    .frame(
+                        width: width,
+                        height: height
+                    )
             }
-            .background(Color.white).shadow(radius: 2)
-            .frame(
-                width: width,
-                height: height
-            )
         }
+        .frame(
+            width: width,
+            height: height
+        )
+        .background(Color.white)
+        .clipShape(Rectangle())
+        .shadow(radius: 2)
+    }
+}
+
+extension BingoItemView {
+    enum Destination: String, Identifiable {
+        var id: Int {
+            hashValue
+        }
+        case new
+        case share
     }
 }
 

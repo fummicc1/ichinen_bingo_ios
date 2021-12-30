@@ -70,7 +70,8 @@ struct GenerateBingoView_Previews: PreviewProvider {
         GenerateBingoView(
             model: GenerateBingoModel(
                 useCase: BingoUseCaseImpl(
-                    localDataStore: LocalDataStoreImpl()
+                    localDataStore: LocalDataStoreImpl(),
+                    httpClient: HTTPClientImpl()
                 )
             )
         )

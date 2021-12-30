@@ -21,7 +21,8 @@ struct RootView: View {
                 GenerateBingoView(
                     model: GenerateBingoModel(
                         useCase: BingoUseCaseImpl(
-                            localDataStore: dataStore
+                            localDataStore: dataStore,
+                            httpClient: HTTPClientImpl()
                         )
                     )
                 )
@@ -38,7 +39,8 @@ struct RootView_Previews: PreviewProvider {
         RootView(
             model: RootModel(
                 bingoUseCase: BingoUseCaseImpl(
-                    localDataStore: LocalDataStoreImpl()
+                    localDataStore: LocalDataStoreImpl(),
+                    httpClient: HTTPClientImpl()
                 )
             )
         )

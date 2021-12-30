@@ -22,3 +22,18 @@ struct AnyShape: Shape {
         return builder(rect)
     }
 }
+
+struct ActivityController: UIViewControllerRepresentable {
+    let items: [Any]
+    let activities: [UIActivity]?
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        UIActivityViewController(
+            activityItems: items,
+            applicationActivities: activities
+        )
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+    }
+}

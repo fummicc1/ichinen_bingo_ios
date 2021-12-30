@@ -20,7 +20,10 @@ class RootViewController: UIViewController {
             rootView: AnyView(
                 RootView(
                     model: RootModel(
-                        bingoUseCase: BingoUseCaseImpl(localDataStore: dataStore)
+                        bingoUseCase: BingoUseCaseImpl(
+                            localDataStore: dataStore,
+                            httpClient: HTTPClientImpl()
+                        )
                     )
                 ).environmentObject(dataStore)
             )
