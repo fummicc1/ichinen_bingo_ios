@@ -30,14 +30,7 @@ struct GenerateBingoView: View {
                         Text("入力されていないTodoがあります")
                             .foregroundColor(.red)
                     }
-                    ForEach(model.todos.indices) { index -> ListItemView in
-                        let number = index + 1
-                        ListItemView(
-                            title: "Todo\(number)",
-                            content: TextField("\(number)個目のTodoを入力", text: $model.todos[index]),
-                            onTap: nil
-                        )
-                    }
+                    GenerateBingoTodoView(todos: $model.todos)
                 }
                 Spacer()
                 Button {

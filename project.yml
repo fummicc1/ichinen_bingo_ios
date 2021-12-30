@@ -135,6 +135,23 @@ targets:
           MARKETING_VERSION: 1.0.0
           PRODUCT_BUNDLE_IDENTIFIER: dev.fummicc1.ichinen-bingo.iOSApp
     sources:
-    - name: iOSApp
-      path: iOSApp
+    - path: iOSApp/AppDelegate.swift
+    - path: iOSApp/Assets.xcassets
+    - name: Base.lproj
+      path: iOSApp/Base.lproj
+    - path: iOSApp/Color.swift
+    - path: iOSApp/RootViewController.swift
+    - path: iOSApp/SceneDelegate.swift
+    - path: iOSApp/Utility.swift
+    - name: Auth
+      path: iOSApp/View/Auth
+    - path: iOSApp/View/Bingo/BingoItemModel.swift
+    - path: iOSApp/View/Bingo/BingoItemView.swift
+    - path: iOSApp/View/Bingo/SimpleBingoTodoItemView.swift
+    - name: GenerateBingo
+      path: iOSApp/View/GenerateBingo
+    - name: Misc
+      path: iOSApp/View/Misc
+    - path: iOSApp/View/RootModel.swift
+    - path: iOSApp/View/RootView.swift
     type: application
