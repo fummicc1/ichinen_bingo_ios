@@ -14,7 +14,6 @@ struct GenerateBingoTodoView: View {
     var body: some View {
         TabView {
             ForEach(0..<5) { row -> List in
-                let items = todos.map({ $0.index / 5 }).filter({ $0 == row })
                 VStack {
                     ForEach(0..<5) { column in
                         let index = row * 5 + column
@@ -34,6 +33,6 @@ struct GenerateBingoTodoView: View {
 
 struct GenerateBingoTodoView_Previews: PreviewProvider {
     static var previews: some View {
-        GenerateBingoTodoView()
+        GenerateBingoTodoView(todos: .constant([]))
     }
 }
