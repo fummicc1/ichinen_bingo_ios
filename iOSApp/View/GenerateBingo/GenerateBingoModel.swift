@@ -20,7 +20,7 @@ class GenerateBingoModel: ObservableObject {
     @Published var error: Error?
     @Published var closePage: Bool = false
 
-    @Published var todos: [String] = (0..<25).map({ _ in "" })
+    @Published var todos: [String] = (0..<25).map({ _ in "テスト" })
 
     let useCase: BingoUseCase
 

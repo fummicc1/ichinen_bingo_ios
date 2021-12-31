@@ -9,8 +9,8 @@ import Foundation
 
 public struct Bingo: Codable, Stubbable, Identifiable, Hashable {
     public let id: Int
-    public let title: String
-    public let todos: [Bingo.Todo]
+    public var title: String
+    public var todos: [Bingo.Todo]
 
     public static var stub: Bingo {
         Bingo(

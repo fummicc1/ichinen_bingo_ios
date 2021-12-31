@@ -7,17 +7,29 @@
 
 import SwiftUI
 import Domain
+import Combine
 
 class BingoItemModel: ObservableObject {
 
     @Published var todoSheet: Bingo.Todo?
-
     @Published var bingo: Bingo
     @Published var screenshot: UIImage?
     @Published var destination: BingoItemView.Destination? = nil
 
-    public init(bingo: Bingo) {
+    private let useCase: BingoUseCase
+    private var cancellables: Set<AnyCancellable> = []
+
+    public init(bingo: Bingo, useCase: BingoUseCase) {
         self.bingo = bingo
+        self.useCase = useCase
+
+        _todoSheet.projectedValue
+            .compactMap({ $0 })
+            .removeDuplicates()
+            .sink { todo in
+                self.onChangeIsCompleted(todo: todo)
+            }
+            .store(in: &cancellables)
     }
 
     func share() {
@@ -35,5 +47,20 @@ class BingoItemModel: ObservableObject {
         }
         destination = .share
         screenshot = image
+    }
+
+    func onChangeIsCompleted(todo: Bingo.Todo) {
+        Task {
+            let isCompleted = todo.isCompleted
+            guard let index = bingo.todos.firstIndex(where: { $0.index == todo.index }) else {
+                return
+            }
+            if isCompleted {
+                try await useCase.makeComplete(bingo: bingo, at: index)
+            } else {
+                try await useCase.revertComplete(bingo: bingo, at: index)
+            }
+            bingo.todos[index] = todo
+        }
     }
 }

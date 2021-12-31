@@ -11,6 +11,8 @@ import Combine
 public protocol BingoUseCase {
     func validate(title: String, todos: [String]) -> InvalidBingoError?
     func add(title: String, todos: [String]) async throws
+    func makeComplete(bingo: Bingo, at index: Int) async throws
+    func revertComplete(bingo: Bingo, at index: Int) async throws
     func fetchList() async throws -> [Bingo]
     func fetchImage() async -> URL
     func buildIntentLink(bingo: Bingo, image: URL?) async throws -> URL
@@ -20,6 +22,10 @@ public protocol BingoUseCase {
 public enum InvalidBingoError: Error {
     case emptyTitle
     case shortTodoList
+}
+
+public enum BingoUseCaseError: Error {
+    case invalidParameter
 }
 
 public class BingoUseCaseImpl: BingoUseCase {
@@ -56,6 +62,25 @@ public class BingoUseCaseImpl: BingoUseCase {
             })
         )
         all.append(bingo)
+        try await localDataStore.save(key: key, value: all)
+    }
+
+    public func makeComplete(bingo: Bingo, at index: Int) async throws {
+        try await updateIsCompleted(bingo: bingo, at: index, isCompleted: true)
+    }
+
+    public func revertComplete(bingo: Bingo, at index: Int) async throws {
+        try await updateIsCompleted(bingo: bingo, at: index, isCompleted: false)
+    }
+
+    private func updateIsCompleted(bingo: Bingo, at index: Int, isCompleted: Bool) async throws {
+        var bingo = bingo
+        let todo = bingo.todos[index]
+        bingo.todos[todo.index].isCompleted = isCompleted
+        var all = try await localDataStore.fetch(key: key, type: [Bingo].self) ?? []
+        if let index = all.firstIndex(where: { $0.id == bingo.id }) {
+            all[index] = bingo
+        }
         try await localDataStore.save(key: key, value: all)
     }
 

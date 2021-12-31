@@ -16,7 +16,15 @@ struct RootView: View {
     var body: some View {
         VStack {
             if let latestBingo = model.latestBingo {
-                BingoItemView(model: BingoItemModel(bingo: latestBingo))
+                BingoItemView(
+                    model: BingoItemModel(
+                        bingo: latestBingo,
+                        useCase: BingoUseCaseImpl(
+                            localDataStore: LocalDataStoreImpl(),
+                            httpClient: HTTPClientImpl()
+                        )
+                    )
+                )
             } else {
                 GenerateBingoView(
                     model: GenerateBingoModel(

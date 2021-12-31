@@ -24,9 +24,9 @@ struct SimpleBingoTodoItemView: View {
                 ListItemView(
                     title: "ステータス",
                     content: Toggle(
-                        isOn: .constant(todo.isCompleted),
+                        isOn: $todo.isCompleted,
                         label: {
-                            Text("達成状況")
+                            EmptyView()
                         }
                     )
                 ) {
