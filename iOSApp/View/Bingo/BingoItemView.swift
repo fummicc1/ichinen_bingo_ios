@@ -106,7 +106,7 @@ struct BingoItemView: View {
         Button {
             onTap(todo)
         } label: {
-            VStack {
+            ZStack {
                 Text(todo.title)
                     .font(.caption2)
                     .foregroundColor(Color.black)
@@ -121,6 +121,12 @@ struct BingoItemView: View {
                         width: width,
                         height: height
                     )
+                if todo.isCompleted {
+                    Circle()
+                        .stroke(lineWidth: 4)
+                        .foregroundColor(Color.red)
+                        .padding(4)
+                }
             }
         }
         .frame(
@@ -146,7 +152,13 @@ extension BingoItemView {
 struct BingoItemView_Previews: PreviewProvider {
     static var previews: some View {
         BingoItemView(
-            model: BingoItemModel(bingo: Bingo.stub)
+            model: BingoItemModel(
+                bingo: Bingo.stub,
+                useCase: BingoUseCaseImpl(
+                    localDataStore: LocalDataStoreImpl(),
+                    httpClient: HTTPClientImpl()
+                )
+            )
         )
     }
 }
